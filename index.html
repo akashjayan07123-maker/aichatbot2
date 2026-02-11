@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Mini AI Chatbot</title>
+  <style>
+    body { font-family: Arial; background:#f2f2f2; }
+    .chat { width:300px; margin:50px auto; background:#fff; padding:10px; }
+    #messages { height:200px; overflow:auto; border:1px solid #ccc; margin-bottom:5px; }
+    input { width:100%; padding:5px; }
+  </style>
+</head>
+<body>
+
+<div class="chat">
+  <h3>AI Chatbot</h3>
+  <div id="messages"></div>
+  <input id="userInput" placeholder="Ask something..." onkeydown="if(event.key==='Enter') send()">
+</div>
+
+<script>
+function send() {
+  let input = document.getElementById("userInput");
+  let msg = input.value.toLowerCase();
+  let chat = document.getElementById("messages");
+
+  chat.innerHTML += "<b>You:</b> " + input.value + "<br>";
+
+  let reply = "I don't understand.";
+
+  if (msg.includes("hi") || msg.includes("hello"))
+    reply = "Hello! 😊";
+  else if (msg.includes("name"))
+    reply = "I am a basic AI chatbot.";
+  else if (msg.includes("how are you"))
+    reply = "I'm doing great!";
+  else if (msg.includes("bye"))
+    reply = "Goodbye 👋";
+
+  chat.innerHTML += "<b>Bot:</b> " + reply + "<br><br>";
+  input.value = "";
+  chat.scrollTop = chat.scrollHeight;
+}
+</script>
+
+</body>
+</html>
